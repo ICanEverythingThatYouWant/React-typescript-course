@@ -1,13 +1,21 @@
 import React from 'react';
-import Card, {CardVariant} from "./components/Card";
+import {BrowserRouter, Route, Routes, NavLink} from "react-router-dom";
+import UserPage from "./components/UserPage";
+import TodosPage from "./components/TodosPage";
 
 const App = () => {
+
     return (
-        <div>
-            <Card variant={CardVariant.outlined} width='200px' height='200px'>
-                <button> кнопка </button>
-            </Card>
-        </div>
+       <BrowserRouter>
+           <div>
+               <NavLink to='/users'> Пользователи</NavLink>
+               <NavLink to='/todos'>Список </NavLink>
+           </div>
+               <Routes>
+                   <Route  path={'/users'} element={<UserPage/>}  />
+                   <Route path={'/todos'} element={<TodosPage/>} />
+               </Routes>
+       </BrowserRouter>
     );
 };
 
